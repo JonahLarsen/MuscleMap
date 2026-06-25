@@ -2,6 +2,8 @@
 __pycache__/
 **/__pycache__/
 scripts.egg-info/
+.vscode
+**/venv
 
 scripts/models/*/
 
