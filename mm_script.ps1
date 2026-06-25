@@ -5,8 +5,8 @@
 .\venv\Scripts\Activate.ps1
 
 # Setup data and output paths
-$data_path = Join-Path $HOME "Documents\code\test_niix"
-$output_path = Join-Path $HOME "Documents\code\out"
+$data_path = $args[0]
+$output_path = $args[1]
 
 Write-Host "Data path is $data_path"
 Write-Host "Output path is $output_path"
