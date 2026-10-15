@@ -47,11 +47,17 @@ foreach ($id in $ids) {
         $t1w_json.FullName `
         "$sessionDir\Johnson_SVO_MM_${id}_ses-T1w.json"
 
-    # Stitch muscle images together
+
     & sct_image `
-        -i $t1w_F0 $t1w_F50 $t1w_F100 $t1w_F150 $t1w_F200 $t1w_F250 $t1w_F300 $t1w_F350 `
+        -i $t1w_F100 `
         -stitch `
-        -o "$sessionDir\Johnson_SVO_${id}_ses-T1w.nii.gz"
+        -o "$sessionDir\Johnson_SVO_${id}_ses-T1w-testing.nii.gz"
+
+    # Stitch muscle images together
+    # & sct_image `
+    #     -i $t1w_F0 $t1w_F50 $t1w_F100 $t1w_F150 $t1w_F200 $t1w_F250 $t1w_F300 $t1w_F350 `
+    #     -stitch `
+    #     -o "$sessionDir\Johnson_SVO_${id}_ses-T1w.nii.gz"
 
     ### Run Segmentations ###
 
@@ -85,8 +91,8 @@ foreach ($id in $ids) {
     # Leg
     py .\scripts\mm_segment.py -i $inputFile -r leg -o $sessionDir
 
-    Move-Item `
-        "$sessionDir\Johnson_SVO_${id}_ses-T1w_dseg.nii.gz" `
-        "$sessionDir\Johnson_SVO_${id}_ses-T1w_chunk-leg_dseg.nii.gz" `
-        -Force
+    # Move-Item `
+    #     "$sessionDir\Johnson_SVO_${id}_ses-T1w_dseg.nii.gz" `
+    #     "$sessionDir\Johnson_SVO_${id}_ses-T1w_chunk-leg_dseg.nii.gz" `
+    #     -Force
 }
